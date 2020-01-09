@@ -9,8 +9,8 @@
 <script>
 import { mapState } from "vuex";
 
-import CoreLayout from "./layout/core.vue";
-import MemoLayout from "./layout/memo.vue";
+import CoreLayout from "./layout/core-layout.vue";
+import MemoLayout from "./layout/memo-layout.vue";
 
 export default {
   name: "app",
@@ -23,7 +23,7 @@ export default {
     layout: function() {
       const routeName = this.$route.name;
 
-      if (routeName.startsWith("memo")) {
+      if (routeName && routeName.startsWith("memo")) {
         return "memo-layout";
       } else {
         return "core-layout";
@@ -33,5 +33,4 @@ export default {
 };
 </script>
 
-<style lang="scss">
-</style>
+<style lang="scss"></style>
