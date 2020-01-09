@@ -5,18 +5,15 @@
 </template>
 
 <script>
-import UserCredentials from "../../components/core/user-credentials.vue";
-import { actionsName } from "../../store/root/actions";
+import { rootActionsName } from "@/store";
+import RedirectAfter from "@/views/core/abstract/redirect-after.vue";
 
 export default {
   name: "user-register",
-  components: { UserCredentials },
-  data: function() {
-    return {};
-  },
+  extends: RedirectAfter,
   methods: {
-    registerUser: function({ username, password }) {
-      this.$store.dispatch(actionsName.login, { username, password });
+    registerUser: async function({ username, password }) {
+      await this.$store.dispatch(rootActionsName.login, { username, password });
     }
   }
 };
