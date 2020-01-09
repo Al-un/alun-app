@@ -31,18 +31,6 @@ export default {
 </script>
 
 <style lang="scss">
-// TODO: move to main scss
-:root {
-  --color-error: red;
-  --color-error-darker: darkred;
-  --color-warning: yellow;
-  --color-warning-darker: orange;
-  --color-info: lightblue;
-  --color-info-darker: navy;
-  --color-success: lightgreen;
-  --color-success-darker: teal;
-}
-
 // To move?
 $alert-levels: ("error", "warning", "info", "success");
 
