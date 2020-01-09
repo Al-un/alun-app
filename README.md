@@ -1,29 +1,17 @@
 # alun
 
-## Project setup
-```
-npm install
-```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Journey
 
-### Compiles and minifies for production
-```
-npm run build
-```
+### 01 SCSS
 
-### Run your unit tests
-```
-npm run test:unit
-```
+### 02 Storybook
 
-### Lints and fixes files
-```
-npm run lint
-```
+https://storybook.js.org/docs/guides/guide-vue/
+https://medium.com/storybookjs/introducing-storybook-for-vue-940f222541c5
+https://auth0.com/blog/using-storybook-with-vuejs/
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+https://storybook.js.org/docs/addons/using-addons/
+```
+yarn add -D @storybook/addons @storybook/addon-knobs
+```
