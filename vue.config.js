@@ -22,7 +22,7 @@ module.exports = {
     loaderOptions: {
       // https://cli.vuejs.org/guide/css.html#passing-options-to-pre-processor-loaders
       scss: {
-        prependData: `@import "~@/styles/_variables.scss";`
+        prependData: `@import "~@/styles/_import.scss";`
       }
     }
   }

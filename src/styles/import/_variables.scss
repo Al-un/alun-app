@@ -1,0 +1,37 @@
+$gutter: 16px;
+
+$color-white: #fff;
+$color-black: #000;
+
+$color-variants: (
+  lightest: 24%,
+  lighter: 16%,
+  light: 8%,
+  base: 0%,
+  dark: -8%,
+  darker: -16%,
+  darkest: -24%
+);
+
+$color-palettes: (
+  primary: rgb(13, 214, 214),
+  secondary: rgb(150, 20, 161)
+);
+
+// applyColorVariant considers positive variant values as lightening value and
+// negative values as darkening values
+//
+// `lighten` and `darken` SCSS functions reveal to be not good candidate for this
+// use case
+@function applyColorVariant($color-value, $variant-value) {
+  // @if $variant-value >= 0% {
+  //   @return lighten($color-value, $variant-value);
+  // } @else {
+  //   @return darken($color-value, -$variant-value);
+  // }
+  @if $variant-value >= 0% {
+    @return mix($color-white, $color-value, $variant-value);
+  } @else {
+    @return mix($color-black, $color-value, -$variant-value);
+  }
+}

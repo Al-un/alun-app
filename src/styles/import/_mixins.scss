@@ -1,0 +1,26 @@
+// Flexbox with vertical items centering as well as content justification
+@mixin flexbox-centered() {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+// Flexbox locked on a single row
+@mixin flexbox-row() {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+@mixin render-as-link {
+  text-decoration: none;
+  border: none;
+  background-color: var(--color-white);
+  color: var(--color-black);
+  transition: color 0.2s;
+
+  &:hover {
+    color: var(--color-primary);
+  }
+}

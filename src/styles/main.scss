@@ -1,1 +1,19 @@
-@import "import/reset"
+@import "import/reset";
+
+:root {
+  --color-white: #{$color-white};
+  --color-black: #{$color-black};
+
+  @each $color-name, $color-value in $color-palettes {
+    @each $variant-name, $variant-value in $color-variants {
+      @if $variant-name == base {
+        --color-#{$color-name}: #{$color-value};
+      } @else {
+        --color-#{$color-name}-#{$variant-name}: #{applyColorVariant(
+            $color-value,
+            $variant-value
+          )};
+      }
+    }
+  }
+}
