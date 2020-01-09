@@ -20,7 +20,7 @@ export const actions = {
 
   [actionsName.logout]: async ({ commit }) => {
     await coreApi.logout();
-    commit(mutationsName.deleteToken, false);
+    commit(mutationsName.deleteToken);
   },
 
   [actionsName.createUser]: async ({ dispatch }, { username, password }) => {
