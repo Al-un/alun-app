@@ -9,8 +9,8 @@
 <script>
 import { mapState } from "vuex";
 
-import CoreLayout from "./layout/core-layout.vue";
-import MemoLayout from "./layout/memo-layout.vue";
+import CoreLayout from "./layout/CoreLayout.vue";
+import MemoLayout from "./layout/MemoLayout.vue";
 
 export default {
   name: "app",

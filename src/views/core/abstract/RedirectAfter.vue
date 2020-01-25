@@ -1,5 +1,5 @@
 <script>
-import UserCredentials from "@/components/core/user-credentials.vue";
+import UserCredentials from "@/components/core/UserCredentials.vue";
 import { mapState } from "vuex";
 import { CORE_HOME } from "@/router";
 

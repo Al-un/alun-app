@@ -6,7 +6,7 @@
 
 <script>
 import { rootActionsName } from "@/store";
-import RedirectAfter from "@/views/core/abstract/redirect-after.vue";
+import RedirectAfter from "@/views/core/abstract/RedirectAfter.vue";
 
 export default {
   name: "user-register",

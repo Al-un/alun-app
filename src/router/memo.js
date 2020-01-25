@@ -1,4 +1,4 @@
-import Memo from "../views/memo/memo.vue";
+import Memo from "../views/memo/Memo.vue";
 
 export const memoRoutes = [
   {

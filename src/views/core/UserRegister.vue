@@ -5,10 +5,10 @@
 </template>
 
 <script>
-import UserCredentials from "@/components/core/user-credentials.vue";
+import UserCredentials from "@/components/core/UserCredentials.vue";
 // import { actionsName } from "@/store/root/actions";
 import { rootActionsName } from "@/store";
-import RedirectAfter from "@/views/core/abstract/redirect-after.vue";
+import RedirectAfter from "@/views/core/abstract/RedirectAfter.vue";
 
 export default {
   name: "user-register",

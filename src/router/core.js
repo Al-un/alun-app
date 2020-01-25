@@ -1,7 +1,7 @@
-import Home from "../views/core/home.vue";
-import UserEdit from "../views/core/user-edit.vue";
-import UserLogin from "../views/core/user-login.vue";
-import UserRegister from "../views/core/user-register.vue";
+import Home from "../views/core/Home.vue";
+import UserEdit from "../views/core/UserEdit.vue";
+import UserLogin from "../views/core/UserLogin.vue";
+import UserRegister from "../views/core/UserRegister.vue";
 
 export const CORE_HOME = "core-home";
 export const CORE_USER_EDIT = "core-user-edit";

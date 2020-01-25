@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import InputText from "../input-text.vue";
+import InputText from "../InputText.vue";
 
 export default {
   name: "user-credentials",

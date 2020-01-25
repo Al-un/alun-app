@@ -37,7 +37,7 @@
 import { mapState } from "vuex";
 
 import { actionsName } from "../../store/memo/actions";
-import InputText from "@/components/input-text";
+import InputText from "@/components/InputText";
 
 export default {
   name: "memo",
