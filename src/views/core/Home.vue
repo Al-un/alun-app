@@ -20,13 +20,18 @@
       <div class="secondary-darker"></div>
       <div class="secondary-darkest"></div>
     </div>
+
+    <h2>Counter</h2>
+    <counter />
   </div>
 </template>
 
 <script>
+import Counter from "@/components/Counter.vue";
+
 export default {
   name: "home",
-  components: {},
+  components: { Counter },
   data: function() {
     return {};
   }
