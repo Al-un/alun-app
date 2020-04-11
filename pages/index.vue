@@ -50,6 +50,7 @@
           <a href="https://github.com/nuxt/nuxt.js" target="_blank">
             Nuxt GitHub
           </a>
+          <counter :start="2" />
         </v-card-text>
         <v-card-actions>
           <v-spacer />
@@ -64,12 +65,14 @@
 
 <script>
 import Logo from '~/components/Logo.vue'
+import Counter from '~/components/Counter.vue'
 import VuetifyLogo from '~/components/VuetifyLogo.vue'
 
 export default {
   components: {
     Logo,
-    VuetifyLogo
+    VuetifyLogo,
+    Counter
   }
 }
 </script>
