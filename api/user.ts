@@ -5,7 +5,7 @@ const API_URL_USER = 'http://localhost:8000'
 export const userApi = {
   register: async (email: string): Promise<void> => {
     try {
-      await fetch(`${API_URL_USER}/v1/users/register`, {
+      await fetch(`${API_URL_USER}/users/v1/register`, {
         method: 'POST',
         mode: 'cors',
         headers: { 'Content-Type': 'appplication/json' },
@@ -26,7 +26,7 @@ export const userApi = {
       : { token, password }
 
     try {
-      await fetch(`${API_URL_USER}/v1/users/password/update`, {
+      await fetch(`${API_URL_USER}/users/v1/password/update`, {
         method: 'POST',
         mode: 'cors',
         headers: { 'Content-Type': 'appplication/json' },
@@ -38,7 +38,7 @@ export const userApi = {
   },
 
   login: async (email: string, password: string): Promise<SuccessfulLogin> => {
-    const resp = await fetch(`${API_URL_USER}/v1/users/login`, {
+    const resp = await fetch(`${API_URL_USER}/users/v1/login`, {
       method: 'POST',
       // mode: 'cors',
       headers: { 'Content-Type': 'appplication/json' },
