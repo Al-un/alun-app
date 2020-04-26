@@ -1,23 +1,38 @@
 <template>
-  <v-container fluid>
+  <v-container class="fill-height">
     <v-row align="center" justify="center">
-      <v-card>
-        <v-text-field
-          v-model="state.username"
-          label="Username"
-          required
-        ></v-text-field>
-        <v-text-field
-          v-model="state.password"
-          label="Password"
-          type="password"
-          required
-        ></v-text-field>
+      <v-col cols="12" sm="8" md="6">
+        <v-card>
+          <v-toolbar color="primary">
+            <v-card-title>Update password</v-card-title>
+          </v-toolbar>
 
-        <v-card-actions>
-          <v-btn text @click="register">Register</v-btn>
-        </v-card-actions>
-      </v-card>
+          <v-form ref="loginForm">
+            <v-card-text>
+              <v-text-field
+                v-model="state.password"
+                type="password"
+                required
+                label="Password"
+                prepend-icon="mdi-lock"
+              ></v-text-field>
+              <v-text-field
+                v-model="state.passwordConfirm"
+                type="password"
+                required
+                label="Password (confirm)"
+                prepend-icon="mdi-lock"
+              ></v-text-field>
+            </v-card-text>
+
+            <v-card-actions>
+              <v-btn block color="primary" @click="updatePassword"
+                >Update password</v-btn
+              >
+            </v-card-actions>
+          </v-form>
+        </v-card>
+      </v-col>
     </v-row>
   </v-container>
 </template>
@@ -34,16 +49,17 @@ export default defineComponent({
 
     const state = reactive({
       username: undefined,
-      password: ''
+      password: '',
+      passwordConfirm: ''
     })
 
-    const register = async () => {
+    const updatePassword = async () => {
       await userApi.updatePassword(token, state.password, state.username)
     }
 
     return {
       state,
-      register
+      updatePassword
     }
   }
 })

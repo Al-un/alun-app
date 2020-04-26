@@ -1,19 +1,39 @@
 <template>
-  <v-layout align-center justify-center>
-    <v-card>
-      <v-text-field v-model="state.email" label="Email" required></v-text-field>
-      <v-text-field
-        v-model="state.password"
-        label="Password"
-        required
-        type="password"
-      ></v-text-field>
+  <v-container class="fill-height">
+    <v-row align="center" justify="center">
+      <v-col cols="12" sm="8" md="6">
+        <v-card>
+          <v-toolbar color="primary">
+            <v-card-title>Login</v-card-title>
+          </v-toolbar>
 
-      <v-card-actions>
-        <v-btn text @click="login">Login</v-btn>
-      </v-card-actions>
-    </v-card>
-  </v-layout>
+          <v-form ref="loginForm">
+            <v-card-text>
+              <v-text-field
+                v-model="state.email"
+                label="Email"
+                prepend-icon="mdi-email"
+                required
+              ></v-text-field>
+              <v-text-field
+                v-model="state.password"
+                :append-icon="state.showPassword ? 'mdi-eye' : 'mdi-eye-off'"
+                :type="state.showPassword ? 'text' : 'password'"
+                required
+                label="Password"
+                prepend-icon="mdi-lock"
+                @click:append="state.showPassword = !state.showPassword"
+              ></v-text-field>
+            </v-card-text>
+
+            <v-card-actions>
+              <v-btn block color="primary" @click="login">Login</v-btn>
+            </v-card-actions>
+          </v-form>
+        </v-card>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script lang="ts">
@@ -30,7 +50,8 @@ export default defineComponent({
   setup() {
     const state = reactive({
       email: '',
-      password: ''
+      password: '',
+      showPassword: false
     })
 
     const login = () => {
