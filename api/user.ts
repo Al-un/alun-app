@@ -1,18 +1,18 @@
 import { SuccessfulLogin } from '~/models/user'
 
-const HOST = 'http://localhost:8080'
-const API_URL_USER = 'http://localhost:8000'
+const BASE_URL = process.env.VUE_APP_BASE_URL;
+const API_URL_USER = process.env.VUE_APP_API_URL_USER;
 
 export const userApi = {
   register: async (email: string): Promise<void> => {
     try {
-      const resp = await fetch(`${API_URL_USER}/users/v1/password/request`, {
+      const resp = await fetch(`${API_URL_USER}/v1/password/request`, {
         method: 'POST',
         mode: 'cors',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           email,
-          redirectUrl: `${HOST}/user/password-update/?requestType=1&t=`,
+          redirectUrl: `${BASE_URL}/user/password-update/?requestType=1&t=`,
           requestType: 1
         })
       })
@@ -25,13 +25,13 @@ export const userApi = {
 
   requestResetPassword: async (email: string): Promise<void> => {
     try {
-      const resp = await fetch(`${API_URL_USER}/users/v1/password/request`, {
+      const resp = await fetch(`${API_URL_USER}/v1/password/request`, {
         method: 'POST',
         mode: 'cors',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           email,
-          redirectUrl: `${HOST}/user/password-update/?requestType=1&t=`,
+          redirectUrl: `${BASE_URL}/user/password-update/?requestType=1&t=`,
           requestType: 0
         })
       })
@@ -52,7 +52,7 @@ export const userApi = {
       : { token, password }
 
     try {
-      const resp = await fetch(`${API_URL_USER}/users/v1/password/update`, {
+      const resp = await fetch(`${API_URL_USER}/v1/password/update`, {
         method: 'POST',
         mode: 'cors',
         headers: { 'Content-Type': 'application/json' },
@@ -66,7 +66,7 @@ export const userApi = {
   },
 
   login: async (email: string, password: string): Promise<SuccessfulLogin> => {
-    const resp = await fetch(`${API_URL_USER}/users/v1/login`, {
+    const resp = await fetch(`${API_URL_USER}/v1/login`, {
       method: 'POST',
       mode: 'cors',
       headers: { 'Content-Type': 'application/json' },
