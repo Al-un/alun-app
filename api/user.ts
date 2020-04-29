@@ -1,7 +1,7 @@
 import { SuccessfulLogin } from '~/models/user'
 
-const BASE_URL = process.env.VUE_APP_BASE_URL;
-const API_URL_USER = process.env.VUE_APP_API_URL_USER;
+const BASE_URL = process.env.VUE_APP_BASE_URL
+const API_URL_USER = process.env.VUE_APP_API_URL_USER
 
 console.debug(`[Init with BASE_URL] ${BASE_URL}`)
 console.debug(`[Init with API_URL_USER] ${API_URL_USER}`)
