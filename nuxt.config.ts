@@ -15,7 +15,7 @@ const alunConfig: AlunConfig = {
    */
   head: {
     titleTemplate: '%s',
-    title: 'Al-un apps',
+    title: 'Al-un',
     // title: process.env.npm_package_name || '',
     meta: [
       { charset: 'utf-8' },
