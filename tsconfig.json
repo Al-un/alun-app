@@ -25,7 +25,8 @@
         "types": [
             "@types/node",
             "@nuxt/types",
-            "vuetify/types"
+            "vuetify/types",
+            "nuxt-i18n"
         ]
     },
     "exclude": [

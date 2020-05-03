@@ -1,7 +1,24 @@
 import { Configuration } from '@nuxt/types'
+import { NuxtVueI18n } from 'nuxt-i18n'
 import colors from 'vuetify/es5/util/colors'
 
 interface AlunConfig extends Configuration {}
+
+const i18nOptions: NuxtVueI18n.Options.AllOptionsInterface = {
+  defaultLocale: 'en',
+  differentDomains: false,
+  detectBrowserLanguage: {
+    useCookie: true,
+    cookieKey: 'i18n_locale'
+  },
+  langDir: 'i18n/',
+  lazy: true,
+  locales: [
+    { code: 'en', iso: 'en-GB', file: 'en.json', name: 'English' },
+    { code: 'fr', iso: 'fr-FR', file: 'fr.json', name: 'Français' }
+  ],
+  parsePages: false
+}
 
 const alunConfig: AlunConfig = {
   mode: 'universal',
@@ -60,7 +77,10 @@ const alunConfig: AlunConfig = {
   modules: [
     '@nuxtjs/pwa',
     // Doc: https://github.com/nuxt-community/dotenv-module
-    '@nuxtjs/dotenv'
+    '@nuxtjs/dotenv',
+    // https://nuxt-community.github.io/nuxt-i18n/
+    // ['nuxt-i18n', i18nOptions]
+    'nuxt-i18n'
   ],
   /*
    ** vuetify module configuration
@@ -99,7 +119,8 @@ const alunConfig: AlunConfig = {
      ** You can extend webpack config here
      */
     extend() {}
-  }
+  },
+  i18n: i18nOptions
 }
 
 export default alunConfig
