@@ -10,9 +10,6 @@ import Counter from '~/components/Counter.vue'
 export default {
   components: {
     Counter
-  },
-  created() {
-    console.log(process.env)
   }
 }
 </script>
