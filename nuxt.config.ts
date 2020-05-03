@@ -1,6 +1,9 @@
+import { Configuration } from '@nuxt/types'
 import colors from 'vuetify/es5/util/colors'
 
-export default {
+interface AlunConfig extends Configuration {}
+
+const alunConfig: AlunConfig = {
   mode: 'universal',
   // https://nuxtjs.org/faq/host-port/#configure-in-code-nuxt-config-js-code-
   server: {
@@ -11,23 +14,29 @@ export default {
    ** Headers of the page
    */
   head: {
-    titleTemplate: '%s - ' + process.env.npm_package_name,
-    title: process.env.npm_package_name || '',
+    titleTemplate: '%s',
+    title: 'Al-un apps',
+    // title: process.env.npm_package_name || '',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       {
         hid: 'description',
         name: 'description',
-        content: process.env.npm_package_description || ''
-      }
+        content: 'Apps, games and utilities'
+        // content: process.env.npm_package_description || ''
+      },
+      { name: 'author', content: 'Al-un' }
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.png' }]
   },
   /*
    ** Customize the progress-bar color
    */
-  loading: { color: '#fff' },
+  loading: {
+    //  color: '#fff'
+    color: colors.teal.base
+  },
   /*
    ** Global CSS
    */
@@ -35,7 +44,7 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['~/plugins/composition-api'],
+  plugins: ['@/plugins/composition-api'],
   /*
    ** Nuxt.js dev-modules
    */
@@ -92,3 +101,5 @@ export default {
     extend() {}
   }
 }
+
+export default alunConfig
