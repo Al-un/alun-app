@@ -22,7 +22,7 @@
     <v-app-bar app>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-spacer />
-      <v-btn to="/user/login" nuxt>Login</v-btn>
+      <v-btn to="/user/login" nuxt>{{ $t('nav.header.login') }}</v-btn>
     </v-app-bar>
 
     <v-content>
