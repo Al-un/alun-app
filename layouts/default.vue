@@ -1,5 +1,5 @@
 <template>
-  <v-app dark>
+  <v-app :dark="dark">
     <v-navigation-drawer v-model="drawer" app>
       <v-list>
         <v-list-item
@@ -35,6 +35,7 @@
 export default {
   data() {
     return {
+      dark: true,
       drawer: false,
       items: [
         {
@@ -49,6 +50,9 @@ export default {
         }
       ]
     }
+  },
+  created() {
+    this.$vuetify.theme.dark = this.dark
   }
 }
 </script>
