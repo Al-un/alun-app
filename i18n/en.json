@@ -1,3 +1,15 @@
 {
-  "nav.header.login": "Login"
+  "nav.header.login": "Login !!",
+  "pages": {
+    "user": {
+      "login": {
+        "form": {
+          "title": "Login",
+          "email": "Email",
+          "password": "Password",
+          "submit": "Submit"
+        }
+      }
+    }
+  }
 }
