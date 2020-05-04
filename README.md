@@ -7,3 +7,11 @@ Various applications developed that I'll hopefully use and share: [https://app.a
   - [Nuxt.js](https://nuxtjs.org)
   - [Nuxt TypeScript](https://typescript.nuxtjs.org/)
   - [Vuetify](https://vuetifyjs.com)
+
+## Notes
+
+Reading:
+
+**Refs vs Reactive**:
+
+- https://www.danvega.dev/blog/2020/02/12/vue3-ref-vs-reactive/
