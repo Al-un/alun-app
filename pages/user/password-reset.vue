@@ -4,26 +4,12 @@
       <v-col cols="12" sm="8" md="6">
         <v-card>
           <v-toolbar color="primary">
-            <v-card-title>Request a password reset</v-card-title>
+            <v-card-title>{{ $t('user.pwd-reset.title') }}</v-card-title>
           </v-toolbar>
 
-          <v-form ref="loginForm">
-            <v-card-text>
-              <v-text-field
-                v-model="state.email"
-                type="email"
-                label="Email"
-                prepend-icon="mdi-email"
-                required
-              ></v-text-field>
-            </v-card-text>
-
-            <v-card-actions>
-              <v-btn block color="primary" @click="requestPwdReset"
-                >Reset</v-btn
-              >
-            </v-card-actions>
-          </v-form>
+          <v-card-text>
+            <password-request />
+          </v-card-text>
         </v-card>
       </v-col>
     </v-row>
@@ -31,30 +17,15 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive } from '@vue/composition-api'
-import { userApi } from '~/api/user'
+import { defineComponent } from '@vue/composition-api'
+import FormPasswordRequest from '~/components/form-password-request.vue'
 
 interface Props {}
 
 export default defineComponent({
   name: '',
-  components: {},
-  props: {},
-
-  setup() {
-    const state = reactive({
-      email: ''
-    })
-
-    const requestPwdReset = async () => {
-      await userApi.requestResetPassword(state.email)
-    }
-
-    return {
-      state,
-      requestPwdReset
-    }
-  }
+  components: { FormPasswordRequest },
+  props: {}
 })
 </script>
 
