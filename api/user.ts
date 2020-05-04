@@ -1,4 +1,4 @@
-import { SuccessfulLogin } from '~/models/user'
+import { Credentials, LoginAPISuccess, LoginResult } from '~/models/user'
 
 const BASE_URL = process.env.ALUN_BASE_URL
 const API_URL_USER = process.env.ALUN_API_URL_USER
@@ -65,17 +65,30 @@ export const userApi = {
     }
   },
 
-  login: async (email: string, password: string): Promise<SuccessfulLogin> => {
+  login: async ({ email, password }: Credentials): Promise<LoginResult> => {
     const resp = await fetch(`${API_URL_USER}/v1/login`, {
       method: 'POST',
       mode: 'cors',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password })
     })
-    const success: SuccessfulLogin = await resp.json()
-    localStorage.setItem('token', success.token)
 
-    return success
+    if (resp.status === 200) {
+      const success: LoginAPISuccess = await resp.json()
+      return {
+        ...success,
+        success: true
+      }
+    } else if (resp.status === 403) {
+      return {
+        success: false,
+        token: ''
+      }
+    } else {
+      const pouet = await resp.json()
+      console.log(pouet)
+      throw new Error('failed')
+    }
   },
 
   logout: async () => {}
