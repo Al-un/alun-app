@@ -1,15 +1,29 @@
 {
-  "nav.header.login": "Login !!",
-  "pages": {
-    "user": {
-      "login": {
-        "form": {
-          "title": "Login",
-          "email": "Email",
-          "password": "Password",
-          "submit": "Submit"
-        }
-      }
-    }
-  }
+  "nav.header.login": "Login",
+  "user.email.label": "Email",
+  "user.email.err.invalid": "Please use a valid email",
+  "user.email.err.not-available": "Email is not available",
+  "user.email.err.not-found": "Email is not found",
+  "user.email.err.required": "Email is required",
+  "user.login.title": "Login",
+  "user.login.in-progress": "Login in progress",
+  "user.login.failed": "Login failed, please check your credentials.",
+  "user.login.success": "Logged in!",
+  "user.login.submit": "Login",
+  "user.password.label": "Password",
+  "user.password.confirm.label": "Password (confirm)",
+  "user.password.err.mismatch": "Passwords mismtach",
+  "user.password.err.required": "Password is required",
+  "user.password.err.too-short": "Password is too short",
+  "user.pwd-reset.title": "Password reset",
+  "user.pwd-reset.in-progress": "Resetting password",
+  "user.pwd-reset.submit": "Reset",
+  "user.pwd-reset.success": "Password reset email sent! please check your mailbox",
+  "user.pwd-update.title": "Password reset",
+  "user.pwd-update.in-progress": "Updating password",
+  "user.pwd-update.submit": "Reset",
+  "user.pwd-update.success": "Password successfully reset!",
+  "user.register.title": "Register",
+  "user.username.label": "Username",
+  "user.username.err.required": "Can you give name?"
 }

@@ -1,3 +1,26 @@
 {
-  "nav.header.login": "Se connecter"
+  "nav.header.login": "Se connecter",
+  "user.email.label": "",
+  "user.email.err.invalid": "",
+  "user.email.err.not-available": "",
+  "user.email.err.not-found": "",
+  "user.email.err.required": "",
+  "user.login.title": "",
+  "user.login.in-progress": "",
+  "user.login.failed": "",
+  "user.login.success": "",
+  "user.login.submit": "",
+  "user.password.label": "",
+  "user.password.confirm.label": "",
+  "user.password.err.mismatch": "",
+  "user.password.err.required": "",
+  "user.password.err.too-short": "",
+  "user.pwd-request.title": "",
+  "user.pwd-request.in-progress": "",
+  "user.pwd-request.success": "",
+  "user.pwd-update.title": "",
+  "user.pwd-update.in-progress": "",
+  "user.pwd-update.success": "",
+  "user.username.label": "",
+  "user.username.err.required": ""
 }
