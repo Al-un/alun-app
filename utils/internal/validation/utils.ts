@@ -1,6 +1,6 @@
-import { FormInputChecker, FormInputValidator } from '~/models/internal'
-import { InputValidationRule } from 'vuetify/types'
 import { SetupContext } from '@vue/composition-api'
+import { InputValidationRule } from 'vuetify/types'
+import { FormInputValidator } from '~/models/internal'
 
 // Local types for clarity
 type LocalRules = { [key: string]: FormInputValidator[] }
