@@ -28,6 +28,7 @@ export const API = {
    */
   MSGS: {
     USER_EMAIL_ALREADY_TAKEN: 10201,
+    USER_LOGIN_FAILED: 10299,
     UNKNOWN: 99999
   }
 }
