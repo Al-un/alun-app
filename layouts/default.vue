@@ -22,7 +22,7 @@
     <v-app-bar app>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-spacer />
-      <v-btn to="/user/login" nuxt>{{ $t('nav.header.login') }}</v-btn>
+      <v-btn :to="loginDest" nuxt>{{ $t('nav.header.login') }}</v-btn>
     </v-app-bar>
 
     <v-content>
@@ -49,6 +49,11 @@ export default {
           to: '/inspire'
         }
       ]
+    }
+  },
+  computed: {
+    loginDest() {
+      return `/user/login?nextPage=${this.$route.path}`
     }
   },
   created() {
