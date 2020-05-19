@@ -18,6 +18,11 @@ export interface ApiError {
 }
 
 /**
+ * To avoid a lot of T | ApiError and save some characters...
+ */
+export type ApiErrorOr<T> = T | ApiError
+
+/**
  * Define the different status when a component is interacted with the API
  */
 export type ApiCallStatus =
