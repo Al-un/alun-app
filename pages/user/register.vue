@@ -7,20 +7,9 @@
             <v-card-title>Register</v-card-title>
           </v-toolbar>
 
-          <v-form ref="loginForm">
-            <v-card-text>
-              <v-text-field
-                v-model="state.email"
-                label="Email"
-                prepend-icon="mdi-email"
-                required
-              ></v-text-field>
-            </v-card-text>
-
-            <v-card-actions>
-              <v-btn block color="primary" @click="register">Register</v-btn>
-            </v-card-actions>
-          </v-form>
+          <v-card-text>
+            <form-register />
+          </v-card-text>
         </v-card>
       </v-col>
     </v-row>
@@ -28,27 +17,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive } from '@vue/composition-api'
-import { userApi } from '~/api/user'
+import { defineComponent } from '@vue/composition-api'
+
+import FormRegister from '~/components/user/form-register.vue'
 
 export default defineComponent({
-  name: 'register-page',
-
-  setup() {
-    const state = reactive({
-      email: 'alun.sng+1@gmail.com'
-    })
-
-    const register = async () => {
-      await userApi.register(state.email)
-    }
-
-    return {
-      state,
-      register
-    }
-  }
+  name: 'RegisterPage',
+  components: { FormRegister }
 })
 </script>
-
-<style lang="scss"></style>
