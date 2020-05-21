@@ -3,13 +3,23 @@
     <v-row align="center" justify="center">
       <v-col cols="12" sm="8" md="6">
         <v-card>
-          <v-toolbar color="primary">
-            <v-card-title>{{ $t('user.login.title') }}</v-card-title>
-          </v-toolbar>
+          <v-tabs v-model="tabModel">
+            <v-tab>{{ $t('user.login.title') }}</v-tab>
+            <v-tab>{{ $t('user.pwd-request.title') }}</v-tab>
+          </v-tabs>
 
-          <v-card-text>
-            <login />
-          </v-card-text>
+          <v-tabs-items v-model="tabModel">
+            <v-tab-item>
+              <v-card-text>
+                <form-login />
+              </v-card-text>
+            </v-tab-item>
+            <v-tab-item>
+              <v-card-text>
+                <form-password-request />
+              </v-card-text>
+            </v-tab-item>
+          </v-tabs-items>
         </v-card>
       </v-col>
     </v-row>
@@ -17,15 +27,23 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@vue/composition-api'
-import FormLogin from '~/components/user/form/form-login.vue'
+import { defineComponent, ref } from '@vue/composition-api'
+
+import FormLogin from '~/components/user/form-login.vue'
+import FormPasswordRequest from '~/components/user/form-password-request.vue'
 
 interface Props {}
 
 export default defineComponent({
-  name: 'login-view',
-  components: { FormLogin },
-  props: {}
+  name: 'LoginPage',
+  components: { FormLogin, FormPasswordRequest },
+  props: {},
+
+  setup() {
+    return {
+      tabModel: ref(0)
+    }
+  }
 })
 </script>
 

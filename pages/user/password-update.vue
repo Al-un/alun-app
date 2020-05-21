@@ -8,7 +8,7 @@
           </v-toolbar>
 
           <v-card-text>
-            <password-update />
+            <form-password-update />
           </v-card-text>
         </v-card>
       </v-col>
