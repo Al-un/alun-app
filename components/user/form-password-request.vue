@@ -1,10 +1,21 @@
 <template>
-  <v-form v-model="isFormValid" @submit.prevent="request.request">
-    <input-email v-model="email" />
+  <v-form v-model="request.isFormValid.value" @submit.prevent="request.submit">
+    <v-alert
+      v-if="request.status.value !== 'idle'"
+      :type="request.alertType.value"
+      ><span>{{ $t(`user.pwd-request.status.${request.status.value}`) }}</span>
+    </v-alert>
+
+    <input-email
+      v-model="email"
+      :disabled="request.status.value === 'processing'"
+    />
 
     <input-submit
-      :disabled="!isFormValid"
-      :value="$t('user.lpwd-reset.submit')"
+      :disabled="
+        !request.isFormValid.value || request.status.value === 'processing'
+      "
+      :value="$t('user.pwd-request.submit')"
     />
   </v-form>
 </template>
@@ -12,7 +23,7 @@
 <script lang="ts">
 import { defineComponent, ref } from '@vue/composition-api'
 
-import { usePasswordRequest } from './form/composition'
+import { usePasswordRequest } from './composition'
 import InputEmail from './form/input-email.vue'
 import InputSubmit from './form/input-submit.vue'
 
@@ -25,15 +36,9 @@ export default defineComponent({
 
   setup() {
     const email = ref('')
-    const isFormValid = ref(false)
-
     const request = usePasswordRequest(email)
 
-    return {
-      email,
-      request,
-      isFormValid
-    }
+    return { email, request }
   }
 })
 </script>

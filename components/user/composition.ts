@@ -55,7 +55,6 @@ export const useLogin = (
       // WTF error
       status.value = 'error'
     } catch (err) {
-      console.warn('loginalert ERROR:', err)
       status.value = 'error'
     }
   }
@@ -87,7 +86,6 @@ export const useRegister = (email: Ref<string>) => {
         status.value = 'error'
       }
     } catch (err) {
-      console.warn('useRegister ERROR:', err)
       status.value = 'error'
     }
   }
@@ -112,7 +110,6 @@ export const usePasswordRequest = (email: Ref<string>) => {
 
       status.value = 'error'
     } catch (err) {
-      console.warn('usePasswordRequest ERROR', err)
       status.value = 'error'
     }
   }
@@ -149,7 +146,7 @@ export const usePasswordUpdate = (
 
       status.value = 'error'
     } catch (err) {
-      console.warn('TODO ERROR', err)
+      status.value = 'error'
     }
   }
 

@@ -1,14 +1,12 @@
 <template>
-  <v-form ref="loginForm" v-model="isFormValid" @submit.prevent="login.submit">
-    <v-alert v-if="login.status.value === 'error'" type="error">{{
-      $t('user.login.failed')
-    }}</v-alert>
-    <v-alert v-else-if="login.status.value === 'processing'" type="info">{{
-      $t('user.login.in-progress')
-    }}</v-alert>
-    <v-alert v-else-if="login.status.value === 'success'" type="success">{{
-      $t('user.login.success')
-    }}</v-alert>
+  <v-form
+    ref="loginForm"
+    v-model="login.isFormValid.value"
+    @submit.prevent="login.submit"
+  >
+    <v-alert v-if="login.status.value !== 'idle'" :type="login.alertType.value">
+      <span>{{ $t(`user.login.status.${login.status.value}`) }}</span>
+    </v-alert>
 
     <input-email
       v-model="credentials.email"
@@ -20,19 +18,17 @@
       can-show
     />
 
-    <input-submit :disabled="!isFormValid" :value="$t('user.login.submit')" />
+    <input-submit
+      :disabled="!login.isFormValid.value"
+      :value="$t('user.login.submit')"
+    />
   </v-form>
 </template>
 
 <script lang="ts">
-import {
-  defineComponent,
-  SetupContext,
-  reactive,
-  ref
-} from '@vue/composition-api'
+import { defineComponent, SetupContext, reactive } from '@vue/composition-api'
 
-import { useLogin } from './form/composition'
+import { useLogin } from './composition'
 import InputEmail from './form/input-email.vue'
 import InputPassword from './form/input-password.vue'
 import InputSubmit from './form/input-submit.vue'
@@ -48,17 +44,9 @@ export default defineComponent({
 
   setup(_: {}, ctx: SetupContext) {
     const credentials = reactive<Credentials>({ email: '', password: '' })
-    const isFormValid = ref(false)
-
     const login = useLogin(ctx, credentials)
 
-    return {
-      credentials,
-      isFormValid,
-      login
-    }
+    return { credentials, login }
   }
 })
 </script>
-
-<style lang="scss"></style>

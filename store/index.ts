@@ -8,8 +8,8 @@ export const state = () => ({
 })
 
 export const actions = {
-  saveToken: async ({ commit }: RootActionCtx, token: string) => {
-      commit("setToken", token)
+  saveToken: ({ commit }: RootActionCtx, token: string) => {
+    commit('setToken', token)
   }
 }
 

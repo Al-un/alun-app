@@ -1,16 +1,11 @@
 <template>
-  <v-form v-model="isFormValid" @submit.prevent="register.submit">
+  <v-form
+    v-model="register.isFormValid.value"
+    @submit.prevent="register.submit"
+  >
     <v-alert
       v-if="register.status.value !== 'idle'"
-      :type="
-        register.status.value === 'failed' || register.status.value === 'error'
-          ? 'error'
-          : register.status.value === 'processing'
-          ? 'info'
-          : register.status.value === 'success'
-          ? 'success'
-          : ''
-      "
+      :type="register.alertType.value"
     >
       <span>{{ $t(`user.register.status.${register.status.value}`) }}</span>
     </v-alert>
@@ -18,7 +13,7 @@
     <input-email v-model="email" />
 
     <input-submit
-      :disabled="!isFormValid"
+      :disabled="!register.isFormValid.value"
       :value="$t('user.register.submit')"
     />
   </v-form>
@@ -40,17 +35,9 @@ export default defineComponent({
 
   setup() {
     const email = ref('')
-    const isFormValid = ref(false)
-
     const register = useRegister(email)
 
-    return {
-      email,
-      register,
-      isFormValid
-    }
+    return { email, register }
   }
 })
 </script>
-
-<style lang="scss"></style>
