@@ -1,6 +1,6 @@
 <template>
   <v-app :dark="dark">
-    <v-navigation-drawer v-model="drawer" app>
+    <v-navigation-drawer v-model="drawer" app clipped>
       <v-list>
         <v-list-item
           v-for="(item, i) in items"
@@ -19,7 +19,7 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-app-bar app>
+    <v-app-bar app clipped-left>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-spacer />
       <v-btn :to="loginDest" nuxt>{{ $t('nav.header.login') }}</v-btn>
