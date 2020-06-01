@@ -1,5 +1,5 @@
-import { ApiReqBasePayload, ApiReqEntityIdPayload } from '~/models/internal'
 import { Board, Memo } from './entity'
+import { ApiReqBasePayload, ApiReqEntityIdPayload } from '~/models/internal'
 
 export interface ApiReqMemoBoardPayload extends ApiReqBasePayload {
   board: Board

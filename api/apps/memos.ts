@@ -16,7 +16,7 @@ export const memosApi = {
       method: HTTP.METHOD.GET,
       mode: 'cors',
       headers: {
-        Authorization: `Token ${token}`,
+        Authorization: `Bearer ${token}`,
         'Content-Type': 'application/json'
       }
     })
@@ -33,7 +33,7 @@ export const memosApi = {
       method: HTTP.METHOD.POST,
       mode: 'cors',
       headers: {
-        Authorization: `Token ${token}`,
+        Authorization: `Bearer ${token}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(board)
@@ -52,7 +52,7 @@ export const memosApi = {
       method: HTTP.METHOD.POST,
       mode: 'cors',
       headers: {
-        Authorization: `Token ${token}`,
+        Authorization: `Bearer ${token}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(memo)
@@ -73,7 +73,7 @@ export const memosApi = {
         method: HTTP.METHOD.DELETE,
         mode: 'cors',
         headers: {
-          Authorization: `Token ${token}`,
+          Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json'
         }
       }
@@ -88,7 +88,7 @@ export const memosApi = {
       method: HTTP.METHOD.DELETE,
       mode: 'cors',
       headers: {
-        Authorization: `Token ${token}`,
+        Authorization: `Bearer ${token}`,
         'Content-Type': 'application/json'
       }
     })
