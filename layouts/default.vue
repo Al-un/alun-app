@@ -60,7 +60,8 @@
 </template>
 
 <script>
-import { LS_USER_TOKEN } from '../constants'
+import { LS_USER_TOKEN, SERVICES_APPS, SERVICES_UTILS } from '~/constants'
+
 export default {
   name: 'DefaultLayout',
 
@@ -68,18 +69,8 @@ export default {
     return {
       dark: true,
       drawer: false,
-      apps: [
-        {
-          i18n: 'nav.menu.apps.memos',
-          to: '/apps/memos/'
-        }
-      ],
-      utils: [
-        {
-          i18n: 'nav.menu.utils.colours',
-          to: '/utilities/colours'
-        }
-      ],
+      apps: SERVICES_APPS,
+      utils: SERVICES_UTILS,
       panels: []
     }
   },
