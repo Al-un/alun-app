@@ -1,5 +1,5 @@
 import { LS_USER_TOKEN } from '~/constants'
-import { RootActionCtx, RootState, UserProfile } from '~/models'
+import { RootActionCtx, RootState, UserProfile, RootGetters } from '~/models'
 
 export const state = () => ({
   // https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-7.html#nullish-coalescing
@@ -42,8 +42,16 @@ export const mutations = {
   }
 }
 
-export const getters = {
-  isLogged: (state: RootState): boolean => {
+export const getters: RootGetters = {
+  getTokenOrError: (state) => {
+    if (state.token) {
+      return state.token
+    }
+
+    throw new Error('Token is currently undefined!')
+  },
+
+  isLogged: (state) => {
     return !!state.token
   }
 }
