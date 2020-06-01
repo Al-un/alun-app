@@ -1,3 +1,12 @@
+export interface ApiOptions {
+  baseUrl?: string
+}
+
+export interface ApiCallOptions {
+  headers?: { [key: string]: string }
+  token?: string
+}
+
 /**
  * Error happening during an API call
  */

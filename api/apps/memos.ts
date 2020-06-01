@@ -1,99 +1,65 @@
+import { ApiBase } from '../base'
 import {
   Board,
+  ApiReqMemoBoardPayload,
   ApiReqMemoMemoIdPayload,
   ApiReqMemoMemoPayload,
   Memo
 } from '~/models/apps/memos'
-import { HTTP } from '~/constants'
 import { ApiReqBasePayload, ApiReqEntityIdPayload } from '~/models'
-import { ApiReqMemoBoardPayload } from '~/models/apps/memos'
 
 const API_URL_MEMOS = process.env.ALUN_API_URL_MEMOS
 
-export const memosApi = {
-  loadBoard: async ({ token }: ApiReqBasePayload): Promise<Board[]> => {
-    const resp = await fetch(`${API_URL_MEMOS}/v1/boards`, {
-      method: HTTP.METHOD.GET,
-      mode: 'cors',
-      headers: {
-        Authorization: `Bearer ${token}`,
-        'Content-Type': 'application/json'
-      }
-    })
+class ApiMemos extends ApiBase {
+  constructor() {
+    super({ baseUrl: API_URL_MEMOS })
+  }
 
-    const content: Board[] = await resp.json()
-    return content
-  },
+  async loadBoard({ token }: ApiReqBasePayload): Promise<Board[]> {
+    const boards = await this.get<Board[]>('/v1/boards', { token })
 
-  createBoard: async ({
-    token,
-    board
-  }: ApiReqMemoBoardPayload): Promise<Board> => {
-    const resp = await fetch(`${API_URL_MEMOS}/v1/boards`, {
-      method: HTTP.METHOD.POST,
-      mode: 'cors',
-      headers: {
-        Authorization: `Bearer ${token}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(board)
-    })
+    return boards
+  }
 
-    const content: Board = await resp.json()
-    return content
-  },
+  async createBoard({ token, board }: ApiReqMemoBoardPayload): Promise<Board> {
+    const createdBoard = await this.post<Board>('/v1/boards', board, { token })
 
-  createMemo: async ({
+    return createdBoard
+  }
+
+  async createMemo({
     token,
     boardId,
     memo
-  }: ApiReqMemoMemoPayload): Promise<Memo> => {
-    const resp = await fetch(`${API_URL_MEMOS}/v1/boards/${boardId}/memos`, {
-      method: HTTP.METHOD.POST,
-      mode: 'cors',
-      headers: {
-        Authorization: `Bearer ${token}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(memo)
-    })
+  }: ApiReqMemoMemoPayload): Promise<Memo> {
+    const createdMemo = await this.post<Memo>(
+      `/v1/boards/${boardId}/memos`,
+      memo,
+      { token }
+    )
 
-    const content: Memo = await resp.json()
-    return content
-  },
+    return createdMemo
+  }
 
-  deleteMemo: async ({
+  async deleteMemo({
     token,
     id,
     boardId
-  }: ApiReqMemoMemoIdPayload): Promise<void> => {
-    const resp = await fetch(
-      `${API_URL_MEMOS}/v1/boards/${boardId}/memos/${id}`,
-      {
-        method: HTTP.METHOD.DELETE,
-        mode: 'cors',
-        headers: {
-          Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json'
-        }
-      }
-    )
-
-    const content = await resp.json()
-    return content
-  },
-
-  deleteBoard: async ({ token, id }: ApiReqEntityIdPayload): Promise<void> => {
-    const resp = await fetch(`${API_URL_MEMOS}/v1/boards/${id}`, {
-      method: HTTP.METHOD.DELETE,
-      mode: 'cors',
-      headers: {
-        Authorization: `Bearer ${token}`,
-        'Content-Type': 'application/json'
-      }
+  }: ApiReqMemoMemoIdPayload): Promise<void> {
+    const resp = await this.delete<void>(`/v1/boards/${boardId}/memos/${id}`, {
+      token
     })
 
-    const content = await resp.json()
-    return content
+    return resp
+  }
+
+  async deleteBoard({ token, id }: ApiReqEntityIdPayload): Promise<void> {
+    const resp = await this.delete<void>(`/v1/boards/${id}`, {
+      token
+    })
+
+    return resp
   }
 }
+
+export const memosApi = new ApiMemos()
