@@ -54,7 +54,10 @@
     </v-app-bar>
 
     <v-content>
-      <nuxt />
+      <nuxt v-if="!isLoading" />
+      <div v-else>
+        Loading...
+      </div>
     </v-content>
   </v-app>
 </template>
@@ -71,7 +74,8 @@ export default {
       drawer: false,
       apps: SERVICES_APPS,
       utils: SERVICES_UTILS,
-      panels: []
+      panels: [],
+      isLoading: true
     }
   },
 
@@ -95,9 +99,10 @@ export default {
   },
 
   // https://github.com/nuxt/nuxt.js/issues/1818#issuecomment-335634895
-  mounted() {
+  async mounted() {
     const token = localStorage.getItem(LS_USER_TOKEN) ?? undefined
-    this.$store.dispatch('saveToken', token)
+    await this.$store.dispatch('saveToken', token)
+    this.isLoading = false
   }
 }
 </script>
