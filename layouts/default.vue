@@ -2,20 +2,44 @@
   <v-app :dark="dark">
     <v-navigation-drawer v-model="drawer" app clipped>
       <v-list>
-        <v-list-item
-          v-for="(item, i) in items"
-          :key="i"
-          :to="item.to"
-          router
-          exact
-        >
-          <v-list-item-action>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title v-text="item.title" />
-          </v-list-item-content>
+        <v-list-item to="/" router exact>
+          <v-list-item-icon>
+            <v-icon>mdi-apps</v-icon>
+          </v-list-item-icon>
+          <v-list-item-title>{{ $t('nav.menu.home') }}</v-list-item-title>
         </v-list-item>
+
+        <v-list-group>
+          <template v-slot:activator>
+            <v-list-item-title>{{ $t('nav.menu.apps') }}</v-list-item-title>
+          </template>
+
+          <v-list-item
+            v-for="(app, idx) in apps"
+            :key="idx"
+            :to="app.to"
+            router
+            exact
+          >
+            <v-list-item-title>{{ $t(app.i18n) }}</v-list-item-title>
+          </v-list-item>
+        </v-list-group>
+
+        <v-list-group>
+          <template v-slot:activator>
+            <v-list-item-title>{{ $t('nav.menu.utils') }}</v-list-item-title>
+          </template>
+
+          <v-list-item
+            v-for="(util, idx) in utils"
+            :key="idx"
+            :to="util.to"
+            router
+            exact
+          >
+            <v-list-item-title>{{ $t(util.i18n) }}</v-list-item-title>
+          </v-list-item>
+        </v-list-group>
       </v-list>
     </v-navigation-drawer>
 
@@ -44,18 +68,19 @@ export default {
     return {
       dark: true,
       drawer: false,
-      items: [
+      apps: [
         {
-          icon: 'mdi-apps',
-          title: 'Welcome',
-          to: '/'
-        },
-        {
-          icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire'
+          i18n: 'nav.menu.apps.memos',
+          to: '/apps/memos/'
         }
-      ]
+      ],
+      utils: [
+        {
+          i18n: 'nav.menu.utils.colours',
+          to: '/utilities/colours'
+        }
+      ],
+      panels: []
     }
   },
 
