@@ -6,21 +6,18 @@ export const state = (): MemosState => ({
 })
 
 export const actions = {
-  loadBoards: async ({ commit, rootState }: MemosActionCtx) => {
-    const token = rootState.token
-    if (!token) {
-      return
-    }
+  loadBoards: async ({ commit, rootGetters }: MemosActionCtx) => {
+    const token = rootGetters.getTokenOrError
     const boards = await memosApi.loadBoard({ token })
 
     commit('setBoards', boards)
   },
 
-  createBoard: async ({ commit, rootState }: MemosActionCtx, board: Board) => {
-    const token = rootState.token
-    if (!token) {
-      return
-    }
+  createBoard: async (
+    { commit, rootGetters }: MemosActionCtx,
+    board: Board
+  ) => {
+    const token = rootGetters.getTokenOrError
     const newBoard = await memosApi.createBoard({ token, board })
 
     commit('addBoard', newBoard)
