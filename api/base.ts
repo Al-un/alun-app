@@ -22,6 +22,7 @@ export abstract class ApiBase {
 
     return {
       Accept: 'application/json',
+      'Content-Type': 'application/json',
       ...authHeader
     }
   }
