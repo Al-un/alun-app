@@ -103,6 +103,7 @@ export default {
     this.$vuetify.theme.dark = this.dark
   },
 
+  // https://github.com/nuxt/nuxt.js/issues/1818#issuecomment-335634895
   mounted() {
     const token = localStorage.getItem(LS_USER_TOKEN) ?? undefined
     this.$store.dispatch('saveToken', token)
