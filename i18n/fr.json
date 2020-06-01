@@ -1,5 +1,6 @@
 {
   "nav.header.login": "Se connecter",
+  "nav.header.logout": "",
   "user.email.label": "",
   "user.email.err.invalid": "",
   "user.email.err.not-available": "",
