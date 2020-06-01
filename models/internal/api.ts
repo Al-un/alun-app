@@ -33,3 +33,11 @@ export type ApiCallStatus =
   | 'success' // request is a success \o/
   | 'failed' // success failed but the failure is an identified one
   | 'error' // error: something went wrong
+
+export interface ApiReqBasePayload {
+  token: string
+}
+
+export interface ApiReqEntityIdPayload extends ApiReqBasePayload {
+  id: string
+}
