@@ -22,7 +22,11 @@
     <v-app-bar app clipped-left>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-spacer />
-      <v-btn :to="loginDest" nuxt>{{ $t('nav.header.login') }}</v-btn>
+      <div v-if="isLogged">
+        <span>{{ userName }}</span>
+        <v-btn>{{ $t('nav.header.logout') }}</v-btn>
+      </div>
+      <v-btn v-else :to="loginDest" nuxt>{{ $t('nav.header.login') }}</v-btn>
     </v-app-bar>
 
     <v-content>
@@ -32,7 +36,10 @@
 </template>
 
 <script>
+import { LS_USER_TOKEN } from '../constants'
 export default {
+  name: 'DefaultLayout',
+
   data() {
     return {
       dark: true,
@@ -51,13 +58,29 @@ export default {
       ]
     }
   },
+
   computed: {
     loginDest() {
       return `/user/login?nextPage=${this.$route.path}`
+    },
+    isLogged() {
+      return this.$store.getters.isLogged
+    },
+    userName() {
+      return this.$store.state.userProfile
+        ? this.$store.state.userProfile.username ||
+            this.$store.state.userProfile.id
+        : ''
     }
   },
+
   created() {
     this.$vuetify.theme.dark = this.dark
+  },
+
+  mounted() {
+    const token = localStorage.getItem(LS_USER_TOKEN) ?? undefined
+    this.$store.dispatch('saveToken', token)
   }
 }
 </script>
