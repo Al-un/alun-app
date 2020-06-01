@@ -1,6 +1,11 @@
 {
   "nav.header.login": "Login",
   "nav.header.logout": "Logout",
+  "nav.menu.home": "Home",
+  "nav.menu.apps": "Apps",
+  "nav.menu.apps.memos": "Memos",
+  "nav.menu.utils": "Utilities",
+  "nav.menu.utils.colours": "Colours",
   "user.email.label": "Email",
   "user.email.err.invalid": "Please use a valid email",
   "user.email.err.not-available": "Email is not available",
