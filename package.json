@@ -13,7 +13,7 @@
     "test": "jest"
   },
   "lint-staged": {
-    "*.{js,vue}": "npm run lint"
+    "*.{js,ts,vue}": "npm run lint"
   },
   "husky": {
     "hooks": {
