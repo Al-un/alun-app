@@ -1,5 +1,5 @@
-import { MemosState, MemosActionCtx, Board } from '~/models/apps/memos'
-import { memosApi } from '~/api/apps/memos'
+import { MemosState, MemosActionCtx, Board } from '~/apps/memos/models'
+import { memosApi } from '~/apps/memos/api'
 
 export const state = (): MemosState => ({
   boards: []

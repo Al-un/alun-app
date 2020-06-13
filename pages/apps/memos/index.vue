@@ -5,7 +5,7 @@
 <script lang="ts">
 import { defineComponent, SetupContext, computed } from '@vue/composition-api'
 
-import { Board } from '~/models/apps/memos'
+import { Board } from '~/apps/memos/models'
 
 interface Props {}
 

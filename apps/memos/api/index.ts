@@ -1,11 +1,11 @@
-import { ApiBase } from '../base'
+import { ApiBase } from '~/api/base'
 import {
   Board,
   ApiReqMemoBoardPayload,
   ApiReqMemoMemoIdPayload,
   ApiReqMemoMemoPayload,
   Memo
-} from '~/models/apps/memos'
+} from '~/apps/memos/models'
 import { ApiReqBasePayload, ApiReqEntityIdPayload } from '~/models'
 
 const API_URL_MEMOS = process.env.ALUN_API_URL_MEMOS
