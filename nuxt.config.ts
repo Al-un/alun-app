@@ -1,15 +1,12 @@
 import { Configuration } from '@nuxt/types'
 import { NuxtVueI18n } from 'nuxt-i18n'
-// To fix import/named error:
-// 3:10  error  Options not found in '@nuxtjs/vuetify'  import/named
-// https://stackoverflow.com/a/55261724/4906586
-import * as VuetifyTypes from '@nuxtjs/vuetify'
 import colors from 'vuetify/es5/util/colors'
+import { LOCALE_DEFAULT } from './i18n'
 
 interface AlunConfig extends Configuration {}
 
 const i18nOptions: NuxtVueI18n.Options.AllOptionsInterface = {
-  defaultLocale: 'en',
+  defaultLocale: LOCALE_DEFAULT,
   differentDomains: false,
   detectBrowserLanguage: {
     useCookie: true,
@@ -22,39 +19,6 @@ const i18nOptions: NuxtVueI18n.Options.AllOptionsInterface = {
     { code: 'fr', iso: 'fr-FR', file: 'fr/index.ts', name: 'Français' }
   ],
   parsePages: false
-}
-
-/**
- * https://vuetifyjs.com/en/customization/theme/
- */
-export const vuetifyOptions: VuetifyTypes.Options = {
-  customVariables: ['~/assets/variables.scss'],
-  theme: {
-    dark: true,
-    disable: false,
-    default: false,
-    options: {},
-    themes: {
-      light: {
-        primary: colors.teal.lighten2,
-        accent: colors.blueGrey.darken3,
-        secondary: colors.pink.darken1,
-        info: colors.blue.lighten2,
-        warning: colors.amber.base,
-        error: colors.red.accent4,
-        success: colors.green.accent3
-      },
-      dark: {
-        primary: colors.teal.darken1,
-        accent: colors.blueGrey.darken3,
-        secondary: colors.pink.darken1,
-        info: colors.blue.lighten1,
-        warning: colors.amber.base,
-        error: colors.red.accent4,
-        success: colors.green.accent3
-      }
-    }
-  }
 }
 
 const alunConfig: AlunConfig = {
@@ -123,7 +87,9 @@ const alunConfig: AlunConfig = {
    ** vuetify module configuration
    ** https://github.com/nuxt-community/vuetify-module
    */
-  vuetify: vuetifyOptions,
+  vuetify: {
+    optionsPath: 'vuetify.options.ts'
+  },
   /*
    ** Build configuration
    */
