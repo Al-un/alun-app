@@ -18,8 +18,8 @@ const i18nOptions: NuxtVueI18n.Options.AllOptionsInterface = {
   langDir: 'i18n/',
   lazy: true,
   locales: [
-    { code: 'en', iso: 'en-GB', file: 'en.json', name: 'English' },
-    { code: 'fr', iso: 'fr-FR', file: 'fr.json', name: 'Français' }
+    { code: 'en', iso: 'en-GB', file: 'en/index.ts', name: 'English' },
+    { code: 'fr', iso: 'fr-FR', file: 'fr/index.ts', name: 'Français' }
   ],
   parsePages: false
 }
