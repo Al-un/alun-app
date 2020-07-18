@@ -23,16 +23,16 @@ module.exports = ({ config }) => {
     '~': path.resolve(__dirname, '../')
   }
 
-  // https://stackoverflow.com/a/56250942/4906586
-  config.module.rules.push({
-    test: /\.stories\.ts?$/,
-    exclude: /node_modules/,
-    use: [
-      { loader: require.resolve('babel-loader') },
-      // https://github.com/storybookjs/storybook/blob/master/MIGRATION.md#from-version-51x-to-52x
-      { loader: require.resolve('@storybook/source-loader') }
-    ]
-  })
+  // // https://stackoverflow.com/a/56250942/4906586
+  // config.module.rules.push({
+  //   test: /\.stories\.ts?$/,
+  //   exclude: /node_modules/,
+  //   use: [
+  //     { loader: require.resolve('babel-loader') },
+  //     // https://github.com/storybookjs/storybook/blob/master/MIGRATION.md#from-version-51x-to-52x
+  //     { loader: require.resolve('@storybook/source-loader') }
+  //   ]
+  // })
 
   config.module.rules.push({
     test: /\.ts$/,
