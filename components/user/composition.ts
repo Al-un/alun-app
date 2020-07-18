@@ -1,5 +1,10 @@
-import { SetupContext, computed, Ref, ref } from '@vue/composition-api'
-import { UnwrapRef } from '@vue/composition-api/dist/reactivity'
+import {
+  SetupContext,
+  computed,
+  Ref,
+  ref,
+  UnwrapRef
+} from '@vue/composition-api'
 
 import { userApi } from '~/api/user'
 import {
