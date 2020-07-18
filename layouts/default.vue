@@ -53,12 +53,12 @@
       <v-btn v-else :to="loginDest" nuxt>{{ $t('nav.header.login') }}</v-btn>
     </v-app-bar>
 
-    <v-content>
+    <v-main>
       <nuxt v-if="!isLoading" />
       <div v-else>
         Loading...
       </div>
-    </v-content>
+    </v-main>
   </v-app>
 </template>
 
